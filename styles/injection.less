@@ -1,0 +1,163 @@
+.tree-view {
+    font-size: 12px;
+    padding: 6vh 3vh;
+    .list-item {
+        line-height: 32px !important;
+        @sitem: 80%;
+        @litem: 45%;
+        background: linear-gradient(-45deg, hsl(160, @sitem, @litem), hsl(270, @sitem, @litem));
+        -webkit-background-clip: text;
+    }
+    .selected:before,
+    .selected:before {
+        height: 32px !important;
+    }
+    .header:before {
+        font-size: 10px !important;
+        opacity: 0.6;
+        margin-right: 0 !important;
+    }
+}
+.tree-view .selected {
+    color: lighten(@text-color, 50%) !important;
+    &:before {
+        background: @app-background-color;
+        content: '';
+        display: block;
+        -webkit-transition: all .25s ease-in-out;
+    }
+}
+.list-group li:not(.list-nested-item).status-modified, .list-tree li:not(.list-nested-item).status-modified, .list-group li.list-nested-item.status-modified > .list-item, .list-tree li.list-nested-item.status-modified > .list-item {
+  background: linear-gradient(-80deg, #e6db74, #FEDB32);
+  color: rgba(248, 248, 242, 0.2);
+  -webkit-background-clip: text;
+  .name.icon.icon-file-directory {
+    color: #e6db74;
+  }
+}
+
+.list-group li:not(.list-nested-item).status-ignored, .list-tree li:not(.list-nested-item).status-ignored, .list-group li.list-nested-item.status-ignored > .list-item, .list-tree li.list-nested-item.status-ignored > .list-item {
+  background: linear-gradient(-80deg, gray, black);
+  -webkit-background-clip: text;
+}
+
+.list-group li:not(.list-nested-item).status-added, .list-tree li:not(.list-nested-item).status-added, .list-group li.list-nested-item.status-added > .list-item, .list-tree li.list-nested-item.status-added > .list-item {
+  background: linear-gradient(-80deg, #529b2f, #2bda77);
+  color: rgba(248, 248, 242, 0.2);
+  -webkit-background-clip: text;
+  .name.icon.icon-file-directory {
+    color: #529b2f;
+  }
+}
+
+.tab-bar {
+    height: 48px;
+    line-height: 48px;
+}
+.tab-bar .tab.active {
+    color: fade(@text-color, 180%);
+    font-weight: normal!important;
+}
+.tab-bar .tab.active .close-icon {
+    color: fade(@text-color, 200%);
+    line-height: 42px;
+}
+.editor {
+    .invisible-character {
+        color: #504949;
+        opacity: 0.5;
+    }
+    .indent-guide {
+        opacity: 0.5;
+    }
+}
+.editor .cursor {
+    border-left-width: 2px;
+}
+.editor.is-focused .line-number.cursor-line-no-selection,
+.editor.is-focused .line.cursor-line {
+    background-color: rgba(53, 57, 60, 0);
+}
+.editor.is-focused .selection .region {
+    background-color: rgba(100, 110, 100, 0.6);
+    color: #fff !important;
+    text-shadow: none;
+}
+.status-bar-right {
+    .git-view {
+        display: inline-block;
+        padding: 0 9px;
+        background-color: currentColor;
+        border-radius: 2px;
+        .git-branch {
+            color: #fff;
+        }
+    }
+    a {
+      padding: 0 5px;
+    }
+    a[data-grammar] {
+        @sgrammar: 85%;
+        @lgrammar: 75%;
+        background: linear-gradient(-45deg, hsl(60, @sgrammar, @lgrammar), hsl(175, @sgrammar, @lgrammar));
+        font-weight: bold;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+html /deep/ .source .string {
+    @s: 85%;
+    @l: 75%;
+    background: linear-gradient(-45deg, hsl(60, @s, @l), hsl(360, @s, @l));
+    font-weight: bold;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+#atom-perspective() {
+    @viewing-distance: 8in;
+    @rotation: 16deg;
+    atom-text-editor {
+        background: @tree-view-background-color;
+    }
+    .tree-view-scroller {
+        transform: perspective(@viewing-distance) rotateY(@rotation) scale(1.1);
+        transform-origin: left;
+        width: 120%;
+        height: 120%;
+    }
+}
+#atom-perspective;
+atom-text-editor::shadow {
+    .highlights .bracket-matcher .region {
+        @s: 85%;
+        @l: 75%;
+        background: rgba(255,255,255,.1);
+        border: 1px solid rgba(255,255,255,.6);
+        border-radius: 2px;
+        transition: background-color .5s;
+    }
+}
+.overlay, atom-panel.modal {
+    background: @app-background-color;
+}
+.tool-panel, atom-panel {
+    position: relative;
+    background: @tree-view-background-color;
+}
+status-bar .flexbox-repaint-hack {
+    padding: 0 12.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: x-small;
+}
+
+// .list-tree.has-collapsable-children .list-nested-item > .list-tree > li, .list-tree.has-collapsable-children .list-nested-item > .list-group > li {
+//   .status-added {
+//     color: #2bda77;
+//   }
+// }

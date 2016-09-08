@@ -1,0 +1,22 @@
+{
+  "name": "perspective-ui",
+  "theme": "ui",
+  "version": "0.10.0",
+  "description": "A colorful perspective UI for Atom",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodegin/perspective-ui"
+  },
+  "keywords": [
+    "adaptive",
+    "minimal",
+    "perspective",
+    "immersive",
+    "ui",
+    "colorful"
+  ],
+  "license": "MIT",
+  "engines": {
+    "atom": ">1.10.0"
+  }
+}
